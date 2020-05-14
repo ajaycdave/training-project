@@ -1,0 +1,28 @@
+ <div class="dropdown">
+      <a data-toggle="dropdown"
+                               class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                               <i class="flaticon-more-1"></i>
+       
+        
+                            </a>
+
+  {% if list_item|length > 0 %}                          
+  	<div class="dropdown-menu dropdown-menu-right">
+        <ul class="kt-nav">
+{% for item in list_item  %}
+	       <li class="kt-nav__item">
+              <a class="kt-nav__link {{ item.class??''}}"
+              data-target-modal="{{ item.target }}"
+			 data-id="{{ item.id }}"
+			 data-url="{{ item.action }}"
+			 href="{{ item.action }}">
+			 <i class="kt-nav__link-icon {{ item.icon }}"></i>&nbsp;&nbsp;<span class="kt-nav__link-text" >{{ item.text }}</span>
+            </a>
+            </li>      
+      
+	{# <li>{{item.text}}</li> #}
+{% endfor %}
+ </ul>
+ </div>
+{% endif %}
+</div>

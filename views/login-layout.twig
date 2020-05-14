@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- begin::Head -->
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Matronic Title</title>
+    <meta name="description" content="Layout options builder">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="assets/media/company-logos/favicon.png"/>
+    <link rel="apple-touch-icon" href="assets/media/company-logos/favicon.png"/>
+    <!--begin::Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+    <!--end::Fonts -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--begin:: Global Mandatory css -->
+
+    <link href="assets/css/arrow/pages/general/login/login-6.css" rel="stylesheet" type="text/css"/>
+
+    <link href="assets/css/arrow/style.bundle.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<!-- end::Head -->
+
+<!-- begin::Body -->
+<body
+    class="kt-page--loading-enabled kt-page--loading kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+
+<!-- begin::Page -->
+<div class="kt-grid kt-grid--ver kt-grid--root">
+    <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v6 kt-login--signin" id="kt_login">
+        <div
+            class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile" >
+            <!--begin::Portlet-->
+            {% block content%}
+                {% endblock %}
+        <!--end::Portlet-->
+            {# <div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content"
+                 style="background-image: url('media/bg/login-bg.jpg');background-position: right;">
+                <div class="kt-login__section">
+                    <div class="kt-login__block">
+                        <h3 class="kt-login__title"></h3>
+                        <h3 class="kt-login__title"></h3>
+                        
+                    </div>
+                </div>
+            </div> #}
+        </div>
+        <!-- end:: Content -->
+    </div>
+</div>
+<!-- end:: Page -->
+
+<!-- begin::Scrolltop -->
+<div id="kt_scrolltop" class="kt-scrolltop">
+    <i class="fa fa-arrow-up"></i>
+</div>
+<!-- end::Scrolltop -->
+<!-- begin::Global Config(global config for global JS sciprts) -->
+<script>
+    var KTAppOptions = {
+        "colors": {
+            "state": {
+                "brand": "#5d78ff",
+                "dark": "#282a3c",
+                "light": "#ffffff",
+                "primary": "#5867dd",
+                "success": "#34bfa3",
+                "info": "#36a3f7",
+                "warning": "#ffb822",
+                "danger": "#fd3995"
+            },
+            "base": {
+                "label": [
+                    "#c5cbe3",
+                    "#a1a8c3",
+                    "#3d4465",
+                    "#3e4466"
+                ],
+                "shape": [
+                    "#f0f3ff",
+                    "#d9dffa",
+                    "#afb4d4",
+                    "#646c9a"
+                ]
+            }
+        }
+    };
+</script>
+<!-- end::Global Config -->
+
+<!--begin:: js -->
+
+
+<script src="assets/vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="assets/vendors/general/sticky-js/dist/sticky.min.js" type="text/javascript"></script>
+<script src="assets/js/arrow/scripts.bundle.js" type="text/javascript"></script>
+<script src="assets/vendors/general/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+<script src="assets/vendors/general/jquery-validation/dist/additional-methods.min.js" type="text/javascript"></script>
+{% block jspush %}
+{% endblock %}
+
+
+<!--end::js -->
+</body>
+<!-- end::Body -->
+</html>

@@ -1,0 +1,143 @@
+{% extends "layout.twig" %}
+{% block head %}
+
+    
+	{{ parent()}}
+	 <link href="assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/vendors/general/select2/dist/css/select2.css" rel="stylesheet" type="text/css"/>
+
+{% endblock %}
+{% block subheader%}
+  <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">
+              Category Listing Page
+            </h3>
+            <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+            <div class="kt-subheader__group" id="kt_subheader_search">
+			<span class="kt-subheader__desc" id="kt_subheader_total">
+	        1 Total
+            </span>
+            </div>
+
+        </div>
+       {#  <div class="kt-subheader__toolbar">
+            <a href="index.php?action=add" class="btn btn-label-brand btn-bold">
+                Add Sales Order </a>
+        </div> #}
+    </div>
+    
+{% endblock %}
+{% block content %}
+
+
+  <div class="row">
+        <div class="col-lg-4">
+            <div class="kt-portlet kt-margin-top-30">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Create Category  
+                        </h3>
+                    </div>
+                </div>
+
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right" action="category.php?action=store" id="categoryForm" method="post" name="categoryForm" enctype="multipart/form-data">
+                        <input type="hidden" name="id" id="id" value="">
+                    <div class="kt-portlet__body">
+                          
+                         <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Name: <i class="text-danger">*</i></label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Status: <i class="text-danger">*</i></label>
+                                <div class="kt-radio-inline">
+                                    <label class="kt-radio kt-radio--solid">
+                                        <input type="radio" name="is_active" checked="" value="Yes"> Active
+                                        <span></span>
+                                    </label>
+                                    <label class="kt-radio kt-radio--solid">
+                                        <input type="radio" name="is_active" value="No"> InActive
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="offset-6 col-lg-6">
+                                    <div class="pull-right">
+                                        <a class="btn btn-secondary" href="category.php">Reset</a>
+                                          <button type="submit" class="btn btn-success"><i class="ik ik-check-circle" id="cl"></i>Save</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="kt-portlet kt-margin-top-30">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                             Category List
+                        </h3>
+                    </div>
+                </div>
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <!--begin: Datatable -->
+                        <table class="table" id="categoryDataTable" data-url="category.php?action=datalisting">
+                            <thead class="thead-arrow-green">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                        </tbody>
+
+                        </table>
+                        <!--end: Datatable -->
+                    </div>
+
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+
+	
+{% endblock %}
+{% block jspush %}
+
+	<script src="assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="assets/js/category/category-datatable.js" type="text/javascript"></script>
+  <script src="assets/js/category/category-validation.js"></script>
+
+	  
+{% endblock %}
+
+{% block  footer%}
+	 {{ parent() }}
+	
+Footer add script
+
+	
+
+{% endblock %}

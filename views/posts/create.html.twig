@@ -1,0 +1,174 @@
+{% extends "layout.twig" %}
+{% block head %}
+	{{ parent()}}
+	 <link href="assets/vendors/general/select2/dist/css/select2.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block subheader%}
+  <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">
+              Listing Page
+            </h3>
+            <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+            <div class="kt-subheader__group" id="kt_subheader_search">
+			<span class="kt-subheader__desc" id="kt_subheader_total">
+	        1 Total
+            </span>
+            </div>
+
+        </div>
+        <div class="kt-subheader__toolbar">
+            <a href="product.php" class="btn btn-label-brand btn-bold">
+                Add Sales Order </a>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">Product</h3>
+             
+            </div>
+          
+        </div>
+
+        <!--begin::Form-->
+        <form method="post" action="#" name="salesForm" id="salesForm"
+              class="kt-form kt-form--label-right repeater">
+         
+            <div class="kt-portlet__body">
+                <input type="hidden" name="sales_invoice"  value="">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="commonDateFormat" data-commondate="dd/mm/yyyy"></div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="hidden" id="id" name="id">
+
+                        <div class="form-group row">
+                            
+         
+        
+                           
+                    <div class="col-lg-3">
+            <label class="customer_id">Customer<span class="text-danger">*</span> :</label>
+                            <select name="customer_id" id="customer_id" class="form-control select"><option value="">Select Customer</option>
+                                
+                            </select>
+                            </div>
+                            <div class="col-lg-3">
+                            <label class="shipment_id">Shipment no<span class="text-danger">*</span> :</label>
+                            <select name="shipment_id[]" multiple id="shipment_id" class="form-control select ">
+                                
+                            </select>
+                            </div>
+                            <div class="col-lg-3">
+                    <label for="sale_invoice">Sales Invoice No <span class="text-danger">*</span>  :</label>
+                        <input type="text" class="form-control" placeholder="" id="sale_invoice" name="sale_invoice">
+                            </div>
+                    <div class="col-lg-3">
+                     <label for="hsn_code">HSN Code<span class="text-danger">*</span>  :</label for="lr_no">
+                    <input type="text" class="form-control" placeholder="" id="hsn_code" name="hsn_code">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-lg-3">
+                                <label for="preparation_date">Preparation Date <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control datepicker" style="width: 100%;"  placeholder="" id="preparation_date"
+                                       name="preparation_date">
+                            </div>
+                                <div class="col-lg-3">
+                                <label for="purchase_date">Removal Date <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control datepicker" style="width: 100%;"  placeholder="" id="removal_date"
+                                       name="removal_date">
+                            </div>
+                            
+                           
+                            <div class="col-lg-3">
+                                <label for="vehicle_no">Vehicle no :</label>
+                     <input type="text" class="form-control" placeholder="" id="vehicle_no" name="vehicle_no">
+                            </div>
+
+                        <div class="col-lg-3">
+                        <label  for="lr_no">L.R no :</label>
+                    <input type="text" class="form-control" placeholder="" id="lr_no" name="lr_no">
+                            </div>                            
+                                                           
+                           
+                           
+                            
+                        </div>
+                               
+                 
+                          
+                
+                
+                <div class="form-group row">
+                    <div class="col-lg-4">
+                        <a href="javascript:;" data-repeater-create=""
+                           class="btn btn-bold btn-primary">
+                            <i class="la la-plus"></i> Add Item
+                        </a>
+                    </div>
+                </div>
+                    <div class="form-group row" style="float: right;">
+                    <div class="col-lg-5">
+                      <label><span>Total Invoice Amount</span></label>
+                    </div>
+                    <div class="col-lg-6">
+                      <input type="text" name="net_total_amount" id="net_total_amount" class="form-control" value="">
+                    </div>
+                </div> 
+                        
+                        
+                    </div>
+                </div>
+               
+                
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <div class="row">
+                        <div class="offset-7"></div>
+                        <div class="col-lg-5">
+                            <div class="pull-right">
+                                <a href="index.php" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-success"><i class="ik ik-check-circle" id="cl"></i>Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="form_type" id="form_type" value="">
+        </form>
+        <!--end::Form-->
+    </div>
+
+	
+{% endblock %}
+{% block jspush %}
+
+     <script src="assets/vendors/general/select2/dist/js/select2.full.js" type="text/javascript"></script>
+    
+        <script src="assets/js/repeater.js" type="text/javascript"></script>
+        <script src="assets/js/products/create-product.js" type="text/javascript">
+
+{% endblock %}
+
+{% block  footer%}
+	 {{ parent() }}
+	
+Footer add script
+
+	<script type="text/javascript">
+var testnew=function(){
+	console.log("asdfasd");
+}
+testnew();
+</script>
+
+{% endblock %}
