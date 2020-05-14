@@ -33,6 +33,10 @@ class ComposerStaticInit109e4d080799901b7296a43d14d242a5
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\Intl\\' => 23,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'L' => 
         array (
             'League\\HTMLToMarkdown\\' => 22,
@@ -83,6 +87,10 @@ class ComposerStaticInit109e4d080799901b7296a43d14d242a5
         'Symfony\\Component\\Intl\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/intl',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'League\\HTMLToMarkdown\\' => 
         array (

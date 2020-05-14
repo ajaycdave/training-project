@@ -1,4 +1,5 @@
 <?php
+
 class Adminacess {
 
 	public function create($object_name, $twig) {
@@ -7,5 +8,6 @@ class Adminacess {
 		//return $this->objname;
 		return new $object_name($twig);
 	}
+		
 
 }

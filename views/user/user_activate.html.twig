@@ -1,0 +1,64 @@
+{% extends "layout.twig" %}
+{% block head %}
+
+    {{ parent()}}
+     <link href="assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/vendors/general/select2/dist/css/select2.css" rel="stylesheet" type="text/css"/>
+
+{% endblock %}
+{% block content %}
+
+
+  <div class="row">
+        <div class="col-lg-12">
+            <div class="kt-portlet kt-margin-top-30">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            User Activate
+                        </h3>
+                    </div>
+                </div>
+                    <div class="kt-portlet__body">
+                        
+                       
+                         <div class="form-group row">
+                            <div class="col-lg-6">
+                        <label>User Acativate Succefully.</label>
+                   
+                            </div>
+
+                        </div>
+                         
+                         <div class="form-group row">
+                            <div class="col-lg-6">
+                        <label>User Email Address:{{ user.email_address}}</label>  
+                   
+                            </div>
+
+                        </div>
+                         
+                      
+                       
+                        
+                    </div>
+                   
+                
+                <!--end::Form-->
+            </div>
+        </div>
+       
+    </div>
+
+    
+{% endblock %}
+
+
+{% block  footer%}
+     {{ parent() }}
+    
+Footer add script
+
+    
+
+{% endblock %}

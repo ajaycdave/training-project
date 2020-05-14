@@ -1,9 +1,9 @@
 <?php
 
 require_once __DIR__ ."/includes/common.php";
-
 require_once __DIR__ ."/models/Users.php";
 require_once __DIR__ .'/Adminacess.php';
+require_once __DIR__ ."/models/Sendmail.php";
 
 Adminacess::create('Userpage', $twig);
 
@@ -24,42 +24,6 @@ class Userpage {
 	public function index() {
 
 		//From email address and name
-		/*$mail = new PHPMailer;
-
-		//Enable SMTP debugging.
-		$mail->SMTPDebug = 3;
-		//Set PHPMailer to use SMTP.
-		$mail->isSMTP();
-		//Set SMTP host name
-		$mail->Host = "smtp.gmail.com";
-		//Set this to true if SMTP host requires authentication to send email
-		$mail->SMTPAuth = true;
-		//Provide username and password
-		$mail->Username = "jiydave2050@gmail.com";
-		$mail->Password = "hetdave@2016";
-		//If SMTP requires TLS encryption then set it
-		$mail->SMTPSecure = "tls";
-		//Set TCP port to connect to
-		$mail->Port = 587;
-
-		$mail->From     = "jiydave2050@gmail.com";
-		$mail->FromName = "jiyadave";
-
-		$mail->addAddress("ajayd@aum.bz", "Ajayd");
-
-		$mail->isHTML(true);
-
-		$mail->Subject = "Subject Text";
-		$mail->Body    = "<i>Mail body in HTML</i>";
-		$mail->AltBody = "This is the plain text version of the email content";
-
-		if (!$mail->send()) {
-		echo "Mailer Error: ".$mail->ErrorInfo;
-		} else {
-		echo "Message has been sent successfully";
-		}
-
-		die;*/
 
 		//$objCategory = new Category();
 		//	$category->action(array(), $this->twig);
@@ -86,6 +50,14 @@ class Userpage {
 			$message['status']  = 'success';
 			$message['message'] = 'Password send your email address';
 
+			$data['subject']       = 'Forgot Pasword';
+			$data['email_address'] = $data['email_address'];
+			$content               = '<div><label>User:'.$data['email_address'].'</lable></div>';
+			$content .= '<div><label>New Password:'.$new_password.'</lable></div>';
+			$data['content'] = $content;
+			$mailsend        = new Sendmail($data);
+			$mailsend->sendMail($data);
+
 			echo $this->twig->render('user/forgotpassword.html.twig', $message);
 
 		} else {
@@ -96,9 +68,23 @@ class Userpage {
 
 		}
 	}
+	public function user_activation() {
+		$data          = array();
+		$id            = $_REQUEST['id'];
+		$objUser       = new Users();
+		$activate_user = "update users set is_active= 'Yes' where id='".$id."'";
+		$objUser->execute($activate_user);
+		$select_user = "select * from users where id='".$id."'";
+		$sel_user    = $objUser->selectOne($select_user);
+
+		$data['user'] = $sel_user;
+		echo $this->twig->render('user/user_activate.html.twig', $data);
+
+	}
 
 	public function store() {
 		$objUser = new Users();
+		$data    = array();
 
 		$data['first_name']    = strip_tags(trim($_REQUEST['first_name']));
 		$data['last_name']     = strip_tags(trim($_REQUEST['last_name']));
@@ -118,6 +104,21 @@ class Userpage {
 			$insert_sql = "insert into users(first_name,last_name,mobile,email_address,password) values('".$data['first_name']."','".$data['last_name']."','".$data['mobile']."','".$data['email_address']."','".$data['password']."')";
 
 			$insert_query = $objUser->execute($insert_sql);
+			$insert_id    = $objUser->insert_id();
+
+			$mailsend              = new Sendmail();
+			$data['subject']       = 'New Registration';
+			$data['email_address'] = $data['email_address'];
+
+			$content = '<h1>User Registration Page</h1>';
+			$content .= '<div>User Registration Succefully.</div>';
+			$verify_url = HOST_NAME.'/user_registration.php?action=user_activation&id='.$insert_id;
+			$content .= '<div>Click here :<a href="'.$verify_url.'">Activation  url</a></div>';
+
+			$data['content'] = $content;
+			$mailsend        = new Sendmail();
+
+			$mailsend->sendMail($data);
 
 			$message['status']  = 'success';
 			$message['message'] = 'User Registration Succefully';

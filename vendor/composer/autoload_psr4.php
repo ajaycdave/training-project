@@ -17,5 +17,6 @@ return array(
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Symfony\\Component\\Mime\\' => array($vendorDir . '/symfony/mime'),
     'Symfony\\Component\\Intl\\' => array($vendorDir . '/symfony/intl'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'League\\HTMLToMarkdown\\' => array($vendorDir . '/league/html-to-markdown/src'),
 );

@@ -35,8 +35,9 @@ class Login {
 			$message['status']      = 'Success';
 			$message['message']     = 'Admin login Succefully';
 			$_SESSION["user_email"] = $sel_user['email_address'];
+			$_SESSION["user_id"]    = $sel_user['id'];
 			$_SESSION["user_name"]  = $sel_user['first_name'];
-			header("Location:user_registration.php?action=forgot_password");
+			header("Location:index.php");
 		} else {
 			$data['message'] = 'Enter email or password invalid';
 			$data['status']  = 'Error';

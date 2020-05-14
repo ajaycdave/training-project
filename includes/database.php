@@ -2,7 +2,8 @@
 require_once __DIR__ .'/DB_Interface.php';
 
 class database implements DB_interface {
-	public $connect;
+	//public $connect;
+	private $connect;
 	use DatatablTrait;
 	public function __construct() {
 
@@ -40,6 +41,9 @@ class database implements DB_interface {
 
 		return $query_execute = mysqli_query($this->connect, $sql);
 
+	}
+	public function insert_id() {
+		return mysqli_insert_id($this->connect);
 	}
 
 }
