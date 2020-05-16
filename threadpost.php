@@ -5,7 +5,7 @@ require_once __DIR__ ."/models/Threadpost.php";
 require_once __DIR__ ."/models/Category.php";
 require_once __DIR__ ."/models/Sendmail.php";
 
-require_once __DIR__ .'/auth_admin.php';
+//require_once __DIR__ .'/auth_admin.php';
 require_once __DIR__ .'/Adminacess.php';
 Adminacess::create('Threadpostpage', $twig);
 
@@ -88,8 +88,10 @@ class Threadpostpage {
 		$objThread     = new Thread();
 		$user_id       = $_SESSION["user_id"];
 		$id            = $_POST['id'];
-		$description   = strip_tags(trim($_POST['description']));
-		$insert_sql    = "insert into thread_posts(thread_id,user_id,description ) values('".$id."','".$user_id."','".$description."')";
+		$description   = addslashes(trim($_POST['description']));
+		$insert_sql    = "insert into thread_posts(thread_id,user_id,description) values('".$id."','".$user_id."','".$description."')";
+
+		$objThreadpost->execute($insert_sql);
 
 		$select_thread = "select * from threads as th
 							inner join users as u on u.id=th.user_id where th.id='".$id."'";
@@ -102,7 +104,6 @@ class Threadpostpage {
 		$mailsend        = new Sendmail($data);
 		$mailsend->sendMail($data);
 
-		$objThreadpost->execute($insert_sql);
 		$message['status']  = 'success';
 		$message['message'] = 'Thread post added Succefully';
 		header("Location:threadpost.php?id=".$id);

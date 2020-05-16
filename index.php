@@ -23,7 +23,7 @@ class Home {
 		$objCategory      = new Category();
 		$data['category'] = $objCategory->selectAll('select * from category');
 
-		echo $this->twig->render('thread/thread_all.html.twig',$data);
+		echo $this->twig->render('thread/thread_all.html.twig', $data);
 	}
 	public function datalisting() {
 		$columns = array(
@@ -32,12 +32,17 @@ class Home {
 			2=> 'action',
 		);
 
-		$limit         = $_REQUEST['length'];
-		$start         = $_REQUEST['start'];
-		$order         = $columns[$_REQUEST['order'][0]['column']];
-		$dir           = $_REQUEST['order'][0]['dir'];
-		$category_id 	=$_REQUEST['categoryID'];
-		$search        = $_REQUEST['search']['value'];
+		$limit       = $_REQUEST['length'];
+		$start       = $_REQUEST['start'];
+		$order       = $columns[$_REQUEST['order'][0]['column']];
+		$dir         = $_REQUEST['order'][0]['dir'];
+		$category_id = $_REQUEST['categoryID'];
+		if (isset($_REQUEST['searchText']) && $_REQUEST['searchText'] != "") {
+			$search = $_REQUEST['searchText'];
+		} else {
+			$search = $_REQUEST['search']['value'];
+		}
+
 		$search_string = '';
 		$objThread     = new Thread();
 		$select_query  = "SELECT th.id,title,ca.name as category_name,ca.id as category_id  FROM threads as th join category as ca on ca.id=th.category_id where 1";
@@ -47,12 +52,11 @@ class Home {
 
 		$totalData = count($postscollection);
 
-		if(isset($category_id) &&  $category_id!="")
-		{
-			$search_string.= " and category_id ='".$category_id."'";
+		if (isset($category_id) && $category_id != "") {
+			$search_string .= " and category_id ='".$category_id."'";
 		}
 		if (isset($search) && $search != "") {
-			$search_string.= " and title like '%".stripcslashes($search)."%'";
+			$search_string .= " and title like '%".stripcslashes($search)."%'";
 		}
 
 		//LIMIT 20 OFFSET 20
@@ -64,10 +68,10 @@ class Home {
 		$postscollection = $objThread->selectAll($filter_query);
 		$data            = array();
 		foreach ($postscollection as $key => $item) {
-			$row['id']    = $item['id'];
-			$row['name']  = '<a href="threadpost.php?id='.$item['id'].'">'.$item['title'].'</a>';
-			$action_array = array();
-			$row['category_name']=$item['category_name'];
+			$row['id']            = $item['id'];
+			$row['name']          = '<a href="threadpost.php?id='.$item['id'].'">'.$item['title'].'</a>';
+			$action_array         = array();
+			$row['category_name'] = $item['category_name'];
 
 			$row['action'] = $objThread->action($action_array, $this->twig);
 

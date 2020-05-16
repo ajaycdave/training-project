@@ -10,12 +10,15 @@ var KTDatatablesDataSourceHtml = function() {
   {
                 $('#btn_clear').on("click",function(){
                     $('#categoryID').val("").change();
+                    $('#search_thread').val('');
 
                 $('#threadDataTable').DataTable().destroy();
                    initSubjectTable();
      });
 
     $("#btn_search").on("click", function(){
+
+
                   $('#threadDataTable').DataTable().destroy();
                    initSubjectTable();
             });
@@ -39,6 +42,7 @@ var KTDatatablesDataSourceHtml = function() {
                 "type": "POST",
                 "data": {
                         categoryID: $('#categoryID').val(),
+                        searchText:$('#search_thread').val(),
                         
                     }
                 /*"data": function (d) {
