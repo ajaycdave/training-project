@@ -51,6 +51,7 @@ var KTDatatablesDataSourceHtml = function() {
                 {
                     "data": "description"
                 },
+                
                
                
             ],
