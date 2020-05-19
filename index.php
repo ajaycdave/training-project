@@ -59,6 +59,7 @@ class Home {
 		$base_query      = $select_query." $group_by";
 		$postscollection = $objThread->selectAll($base_query);
 
+
 		$totalData = count($postscollection);
 
 		if (isset($category_id) && $category_id != "") {

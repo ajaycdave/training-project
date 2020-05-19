@@ -57,13 +57,17 @@ var KTDatatablesDataSourceHtml = function() {
                     "data": "name"
                 },
                 {
+                  "data":"description"
+                },
+                {
                   "data":"category_name"
                 },
+                
                
                 
             ],
             'columnDefs': [ {
-              'targets': [0], 
+              'targets': [0,1], 
               'orderable': false, 
              }],
             "drawCallback": function( settings, start, end, max, total, pre ) {  
