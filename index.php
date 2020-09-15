@@ -98,5 +98,24 @@ class Home {
 		);
 		echo json_encode($json_data);
 	}
+	public function __construct($twig) {
 
+		$this->twig = $twig;
+
+		if (isset($_REQUEST['action']) && $_REQUEST['action'] !== "") {
+			$action_method = $_REQUEST['action'];
+			$this->$action_method();
+		} else {
+			$this->index();
+		}
+	}
+	public function index() {
+
+		//From email address and name
+
+		//$objCategory = new Category();
+		//	$category->action(array(), $this->twig);
+		echo $this->twig->render('user/create.html.twig');
+
+	}
 }
