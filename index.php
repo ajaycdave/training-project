@@ -109,7 +109,7 @@ class Home {
 			$this->index();
 		}
 	}
-	public function index() {
+	/*public function index() {
 
 		//From email address and name
 
@@ -117,5 +117,5 @@ class Home {
 		//	$category->action(array(), $this->twig);
 		echo $this->twig->render('user/create.html.twig');
 
-	}
+	}*/
 }
