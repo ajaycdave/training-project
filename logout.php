@@ -8,8 +8,9 @@ class Logout{
 
 	 public function do_logout(){
 	 	unset($_SESSION['user_email']);
-	 	header("location:login.php");
+	 //	header("location:login.php");
 	 }
+
 
 }
 
