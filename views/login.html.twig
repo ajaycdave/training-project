@@ -10,7 +10,6 @@
                           
                         </a>
                     </div>
-
                     <div class="kt-login__signin">
                         <!-- <div class="kt-login__head">
                             <h3 class="kt-login__title">Sign In To Admin</h3>
@@ -20,9 +19,7 @@
             {% if(status=="Error") %}
             <div class="alert alert-danger">{{ message}}</div>
             {% endif %}
-                
-                        
-                        <!--begin::Form-->
+                            <!--begin::Form-->
                             <form action="login.php?action=do_login" method="post" class="kt-form" name="loginForm" id="loginForm" autocomplete="off">
                                 
 
@@ -59,7 +56,5 @@
     </div>
 {% endblock %}
 {% block jspush %}
-
- <script src="assets/js/login-validation.js"></script>
-       
+<script src="assets/js/login-validation.js"></script>
 {% endblock %}
