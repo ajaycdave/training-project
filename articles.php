@@ -135,8 +135,7 @@ class Articlespage {
 
 	}
 	public function delete() {
-		
-		$objArticle    = new Article();
+	    $objArticle    = new Article();
 		$id            = $_REQUEST['id'];
 		$delete_record = "delete from articles where id='".$id."'";
 		$objArticle->execute($delete_record);
