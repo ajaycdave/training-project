@@ -13,10 +13,8 @@ class Categorypage {
 
 	private $twig;
 	public function __construct($twig) {
-
-		$this->twig = $twig;
-
-		if (isset($_REQUEST['action']) && $_REQUEST['action'] !== "") {
+	    $this->twig = $twig;
+    	if (isset($_REQUEST['action']) && $_REQUEST['action'] !== "") {
 			$action_method = $_REQUEST['action'];
 			$this->$action_method();
 		} else {
@@ -25,11 +23,7 @@ class Categorypage {
 		}
 	}
 	public function index() {
-		//$objCategory = new Category();
-		//	$category->action(array(), $this->twig);
-
-		echo $this->twig->render('category/index.html.twig');
-
+	    echo $this->twig->render('category/index.html.twig');
 	}
 	public function datalisting() {
 		$columns = array(
@@ -38,7 +32,6 @@ class Categorypage {
 			2=> 'is_active',
 			3=> 'action',
 		);
-
 		$limit         = $_REQUEST['length'];
 		$start         = $_REQUEST['start'];
 		$order         = $columns[$_REQUEST['order'][0]['column']];
@@ -48,11 +41,8 @@ class Categorypage {
 		$objCategory   = new Category();
 		$select_query  = "SELECT id,name,is_active  FROM category where 1";
 		$orderby       = "order by $order $dir";
-
 		$postscollection = $objCategory->selectAll($select_query);
-
 		$totalData = count($postscollection);
-
 		if (isset($search) && $search != "") {
 			$search_string = " and name like '%".stripcslashes($search)."%'";
 		}
