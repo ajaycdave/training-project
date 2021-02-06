@@ -18,7 +18,6 @@ class Sendmail extends database {
 		$mail->isSMTP();
 		//Set SMTP host name
 		$mail->Host = "smtp.gmail.com";
-
 		//Set this to true if SMTP host requires authentication to send email
 		$mail->SMTPAuth = true;
 		//Provide username and password
@@ -28,7 +27,6 @@ class Sendmail extends database {
 		$mail->SMTPSecure = "tls";
 		//Set TCP port to connect to
 		$mail->Port = 587;
-
 		$mail->From     = "ajaydave2050@gmail.com";
 		$mail->FromName = "ajayd";
 		$mail->addAddress($data['email_address']);
