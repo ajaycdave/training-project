@@ -22,7 +22,6 @@ class Home {
 	public function index() {
 		$objCategory      = new Category();
 		$data['category'] = $objCategory->selectAll('select * from category');
-
 		echo $this->twig->render('thread/thread_all.html.twig', $data);
 	}
 	public function datalisting() {
@@ -58,9 +57,7 @@ class Home {
 		$orderby         = "order by $order $dir";
 		$base_query      = $select_query." $group_by";
 		$postscollection = $objThread->selectAll($base_query);
-
-
-		$totalData = count($postscollection);
+    	$totalData = count($postscollection);
 
 		if (isset($category_id) && $category_id != "") {
 			$search_string .= " and category_id ='".$category_id."'";
@@ -73,8 +70,7 @@ class Home {
 		//LIMIT 20 OFFSET 20
 
 		$select_query = $select_query." $search_string $group_by";
-
-		$postscollection = $objThread->selectAll($select_query);
+    	$postscollection = $objThread->selectAll($select_query);
 		$totalFiltered   = count($postscollection);
 		$filter_query    = $select_query." $search_string  $orderby limit $limit OFFSET $start ";
 		$postscollection = $objThread->selectAll($filter_query);
