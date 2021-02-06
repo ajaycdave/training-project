@@ -13,7 +13,6 @@ class database implements DB_interface {
 		$this->connect = $con;
 
 	}
-
 	public function selectAll($sql) {
 		$toReturn     = array();
 		$select_query = mysqli_query($this->connect, $sql);
