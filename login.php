@@ -20,10 +20,15 @@ class Login {
 		$data['status'] = 'Login';
 		echo $this->twig->render('login.html.twig', $data);
 	}
+
 	public function detailPage() {
 		$data           = array();
 		$data['status'] = 'Login';
 		echo $this->twig->render('login.html.twig', $data);
+
+	public function landingPage() {
+		return $array;
+
 	}
 	public function do_login() {
 		$user  = new Users();
@@ -31,7 +36,8 @@ class Login {
     	$password = md5($_POST['password']);
     	$sel_query = "select * from users where email_address='".$email."' and password='".$password."' and is_active='Yes'";
     	$sel_user = $user->selectOne($sel_query);
-		if (count($sel_user) > 0) {
+
+        if (count($sel_user) > 0 && isset($sel_user)) {
 			$message['status']      = 'Success';
 			$message['message']     = 'Admin login Succefully';
 			$_SESSION["user_email"] = $sel_user['email_address'];
