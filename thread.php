@@ -41,7 +41,6 @@ class Threadpage {
 		$orderby       = "order by $order $dir";
 
 		$postscollection = $objThread->selectAll($select_query);
-
 		$totalData = count($postscollection);
 
 		if (isset($search) && $search != "") {
@@ -90,6 +89,7 @@ class Threadpage {
 		echo json_encode($json_data);
 	}
 	public function store() {
+
 
 		$objThread   = new Thread();
 		$title       = strip_tags(trim($_POST['title']));
