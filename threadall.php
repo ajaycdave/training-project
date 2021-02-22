@@ -22,6 +22,9 @@ class Threadpage {
 	public function index() {
 		echo $this->twig->render('thread/thread_all.html.twig');
 	}
+	public function listingAction() {
+		echo $this->twig->render('thread_list/thread_all.html.twig');
+	}
 	public function datalisting() {
 		$columns = array(
 			0=> 'id',
