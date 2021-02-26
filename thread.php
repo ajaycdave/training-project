@@ -150,5 +150,13 @@ class Threadpage {
 		$json_data = array('success' => true, 'message' => 'Thread  deleted successfully.');
 		echo json_encode($json_data, 200);
 	}
+	public function searchAction() {
+		$objThread=new Thread();
+		$delete_record = "delete from threads where id='".$id."'";
+		$objThread->execute($delete_record);
+		$json_data = array('success' => true, 'message' => 'Thread  deleted successfully.');
+		echo json_encode($json_data, 200);
+
+	}
 
 }
