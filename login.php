@@ -20,6 +20,13 @@ class Login {
 		$data['status'] = 'Login';
 		echo $this->twig->render('login.html.twig', $data);
 	}
+
+	public function detailPage() {
+		$data           = array();
+		$data['status'] = 'Login';
+		echo $this->twig->render('login.html.twig', $data);
+
+	}
 	public function do_login() {
 		$user  = new Users();
 		$email = $_POST['email'];
